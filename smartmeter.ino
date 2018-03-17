@@ -5,12 +5,14 @@ LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 #define pulse2 9
 #define pulse3 10
 #define pulse4 11
-int i;
+int i = 0;
+float Rupee=0,Unit=0;
 float one_pulse=0.03125;
 
-
+float f;
 void setup()
 {
+  
   Serial.begin(9600);
 pinMode(pulse1, INPUT);
 pinMode(pulse2, INPUT);
@@ -21,18 +23,14 @@ lcd.setCursor(0,0);
 lcd.print("SmartElectricity");
 lcd.setCursor(0,1);
 lcd.print("     Meter");
-delay(4000);
+delay(2000);
 lcd.clear();
 
 }
 
 void loop()
 {
-   
- float Rupee=0,Unit=0;
  lcd.clear();
- while(1)
- {
   
   if(digitalRead(pulse1)==1)
   {
@@ -62,7 +60,7 @@ void loop()
    Rupee=Unit*10;                             
    }
 lcd.setCursor(0,0);
-lcd.print("Rupees: ");
+lcd.print("Rs: ");
 lcd.print(Rupee);
 lcd.setCursor(0,1);
 lcd.print("Unit: ");
@@ -70,6 +68,6 @@ lcd.print(Unit);
 Serial.println(Unit);
 //Serial.println("\n");
 Serial.println(Rupee);
-delay(100);
-}
+delay(1000);
+
 }
