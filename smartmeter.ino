@@ -8,6 +8,7 @@ float one_pulse=0.3125;
 
 void setup()
 {
+  Serial.begin(9600);
 pinMode(pulse, INPUT);
 lcd.begin(16,2);
 lcd.setCursor(0,0);
@@ -35,12 +36,16 @@ void loop()
    while(digitalRead(pulse));
   }
 
+
 lcd.setCursor(0,0);
 lcd.print("Rupee: ");
 lcd.print(Rupee);
 lcd.setCursor(0,1);
 lcd.print("Unit: ");
 lcd.print(Unit);
+Serial.println(Unit);
+Serial.println("\n");
+Serial.println(Rupee);
 delay(10);
 }
 }
